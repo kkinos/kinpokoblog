@@ -39,9 +39,9 @@ params:
   description: kinpokoのブログ
   enableRSS: true
   # To enable comments, you may need to set `disqusShortname`
-  enableComments: true
+  enableComments: false
   # To enable comments, you may need to set `googleAnalytics`
-  enableGoogleAnalytics: true
+  enableGoogleAnalytics: false
 
   # Optional
   home: '' # Default: Home
