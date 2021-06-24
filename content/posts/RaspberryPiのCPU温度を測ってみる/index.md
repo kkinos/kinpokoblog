@@ -3,7 +3,7 @@ title: "RaspberryPiのCPU温度を測ってみる"
 date: 2021-06-23T16:27:16+09:00
 draft: false
 tags: ["Python", "RaspberryPi"]
-image: ""
+slug: "measuring-the-cpu-temperature-of-the-raspberrypi"
 ---
 
 ## 背景

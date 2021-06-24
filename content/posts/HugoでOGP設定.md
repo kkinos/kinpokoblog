@@ -3,6 +3,7 @@ title: "HugoでOGP設定"
 date: 2021-06-24T00:03:28+09:00
 draft: false
 tags: ["Hugo"]
+slug: setting-up-ogp-in-hugo
 ---
 
 ## 背景

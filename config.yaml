@@ -7,8 +7,9 @@ canonifyurls: true
 
 
 hasCJKLanguage: true
+# URLを変更
 permalinks:
-  posts: /posts/:title/
+  posts: /posts/:slug/
 
 googleAnalytics: 
 disqusShortname: your-disqus-shortname
