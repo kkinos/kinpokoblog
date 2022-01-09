@@ -25,7 +25,7 @@ slug: "ogp-image-with-vercel+fastapi"
 
 ## できたもの
 
-[GitHub のリポジトリ](https://github.com/kinpoko/vercel-generating-og-images)
+{{<githubcard url="https://github.com/kinpoko/vercel-generating-og-images"name="vercel-generating-og-images">}}
 
 `https://vercel-generating-og-images.vercel.app/kinpoko.png?template=kinpokoblog`
 

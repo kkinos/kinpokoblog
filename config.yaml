@@ -43,6 +43,7 @@ params:
   enableGoogleAnalytics: false
 
   env: production
+  customcss: true
   # Optional
   home: "" # Default: Home
   about: "" # Default: About

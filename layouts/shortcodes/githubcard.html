@@ -1,0 +1,14 @@
+<script type="text/javascript">
+  var Url = "{{ .Get "url"}}"
+  var Name = "{{ .Get "name"}}"
+</script>
+
+<div class="githubcard" id="{{ .Get "name"}}" align= "center"></div>
+<br />
+
+
+{{ with resources.Get "js/githubcard.js" }} {{ $js := resources.Get . |
+js.Build}}
+
+<script src="{{ $js.Permalink }}"></script>
+{{ end }}

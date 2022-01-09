@@ -30,7 +30,9 @@ MikanOS はカーネルの中に GUI やファイルシステムがあるので�
 
 # できたもの
 
-[kinOS](https://github.com/kinpoko/kinOS)
+{{<githubcard url="https://github.com/kinpoko/kinOS" name="kinOS">}}
+
+# デモ
 
 {{<img src="screenshot.png" alt="screenshot" title="QEMUで起動させた様子">}}
 
