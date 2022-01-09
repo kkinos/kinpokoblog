@@ -14,9 +14,9 @@ slug: "get-ogp-of-external-site"
 
 初めに考えたのは Hugo の shortcode で JavaScript を埋め込み、そのスクリプトの中で JavaScript の fetch を用いて対象の URL にアクセスし、そのレスポンスから OGP 情報を取得するという方法でした。しかし、これは[同一オリジンポリシー](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)に違反してしましました。これは簡単に言うと、ブラウザはリクエストしたオリジン(ドメインのようなもの)以外にリクエストを投げることを制限しているということです。つまり前述の方法では、ブラウザはこのブログであるhttps://kinpokoblog.com にリクエストしたのにスクリプトが別のオリジンにリクエストを投げたので、それを制限しようとしてしまいます。(厳密には少し違う)
 
-では異なるオリジンにリクエストを送り、そのレスポンスを受け取ろうとするにはどうするのかというと[CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)を使用します。これはリクエストされるサーバで設定すればいいです。
+では異なるオリジンにリクエストを送り、そのレスポンスを受けとるにはどうすればいいのかというと[CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)を使用します。これはリクエストされるサーバで設定します。
 
-よって最終的には、別のサイトの URL を受け取って OGP の情報を返すような API サーバを自分で立てて、そのサーバで CORS の設定を行い、shortcode はそのサーバに対してリクエストを送るようなスクリプトを埋め込むという方法にしました。以下は実装です。
+よって最終的には、別のサイトの URL を受け取って OGP の情報を返すような API サーバを自分で立てて、そのサーバで CORS の設定を行い、shortcode はそのサーバに対してリクエストを送るようなスクリプトを埋め込む、という方法にしました。以下では実装を紹介します。
 
 # API サーバ
 
@@ -87,26 +87,26 @@ function MakeGithubCard(url, name) {
     });
 }
 
-function MakeCard(jsonObj, name) {
-  const target_ele = document.getElementById(name);
-  const title = jsonObj.title;
-  const url = jsonObj.url;
-  const description = jsonObj.description;
-  const image_url = jsonObj.image;
+function MakeCard(json, name) {
+  const target_elem = document.getElementById(name);
+  const title = json.title;
+  const url = json.url;
+  const description = json.description;
+  const image_url = json.image;
 
-  var ele_a = document.createElement("a");
-  ele_a.href = url;
+  var elem_a = document.createElement("a");
+  elem_a.href = url;
 
-  var ele_img = document.createElement("img");
-  ele_img.src = image_url;
-  ele_img.style.width = "70%";
-  ele_img.style.height = "70%";
+  var elem_img = document.createElement("img");
+  elem_img.src = image_url;
+  elem_img.style.width = "70%";
+  elem_img.style.height = "70%";
 
-  ele_a.appendChild(ele_img);
-  target_ele.appendChild(ele_a);
+  elem_a.appendChild(elem_img);
+  target_elem.appendChild(elem_a);
 }
 ```
 
 # おわりに
 
-外部の OGP を取得する API サーバを Go と Vercel で構築し、Hugo の shortcode を用いて API サーバとやり取りをするような JavaScript を埋め込みました。参考になれば幸いです。
+外部の OGP を取得する API サーバを Go と Vercel で実装し、Hugo の shortcode を用いて API サーバとやり取りをするような JavaScript を埋め込みました。参考になれば幸いです。
