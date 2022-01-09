@@ -2,9 +2,8 @@
   // <stdin>
   MakeGitHubCard(Url, Name);
   function MakeGitHubCard(url, name) {
-    var URL = url;
     var repo_name = name;
-    fetch("https://getogp.vercel.app/api?url=" + Url, {
+    fetch("https://getogp.vercel.app/api?url=" + url, {
       mode: "cors"
     }).then((response) => {
       return response.json();
