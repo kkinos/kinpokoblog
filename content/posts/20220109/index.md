@@ -1,5 +1,5 @@
 ---
-title: "Hugoのブログで外部サイトのOGPを取得する"
+title: "Hugoで外部サイトのOGPを取得する"
 date: 2022-01-09T16:43:52+09:00
 draft: false
 tags: ["Hugo", "Vercel", "Go"]
