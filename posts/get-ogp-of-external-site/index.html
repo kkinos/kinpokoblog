@@ -37,9 +37,9 @@ js.Build}}
 
 &lt;<span style=color:green;font-weight:700>script</span> <span style=color:#b44>src</span><span style=color:#666>=</span><span style=color:#b44>&#34;{{ $js.Permalink }}&#34;</span>&gt;&lt;/<span style=color:green;font-weight:700>script</span>&gt;
 {{ end }}
-</code></pre></div><h1 id=スクリプト>スクリプト <a href=#%e3%82%b9%e3%82%af%e3%83%aa%e3%83%97%e3%83%88 class=anchor>🔗</a></h1><p><code>assets/js/githubcard.js</code></p><div class=highlight><pre style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>GetGitHubOGP(Url, Name);
+</code></pre></div><h1 id=スクリプト>スクリプト <a href=#%e3%82%b9%e3%82%af%e3%83%aa%e3%83%97%e3%83%88 class=anchor>🔗</a></h1><p><code>assets/js/githubcard.js</code></p><div class=highlight><pre style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>MakeGithubCard(Url, Name);
 
-<span style=color:#a2f;font-weight:700>function</span> GetGitHubOGP(url, name) {
+<span style=color:#a2f;font-weight:700>function</span> MakeGithubCard(url, name) {
   <span style=color:#a2f;font-weight:700>var</span> repo_name <span style=color:#666>=</span> name;
   fetch(<span style=color:#b44>&#34;https://getogp.vercel.app/api?url=&#34;</span> <span style=color:#666>+</span> url, {
     mode<span style=color:#666>:</span> <span style=color:#b44>&#34;cors&#34;</span>,
@@ -48,30 +48,30 @@ js.Build}}
       <span style=color:#a2f;font-weight:700>return</span> response.json();
     })
     .then((result) =&gt; {
-      MakeGitHubCard(result, repo_name);
+      MakeCard(result, repo_name);
     })
     .<span style=color:#a2f;font-weight:700>catch</span>((e) =&gt; {
       console.log(e);
     });
 }
 
-<span style=color:#a2f;font-weight:700>function</span> MakeGitHubCard(jsonObj, name) {
-  <span style=color:#a2f;font-weight:700>const</span> nameele <span style=color:#666>=</span> <span style=color:#a2f>document</span>.getElementById(name);
+<span style=color:#a2f;font-weight:700>function</span> MakeCard(jsonObj, name) {
+  <span style=color:#a2f;font-weight:700>const</span> target_ele <span style=color:#666>=</span> <span style=color:#a2f>document</span>.getElementById(name);
   <span style=color:#a2f;font-weight:700>const</span> title <span style=color:#666>=</span> jsonObj.title;
   <span style=color:#a2f;font-weight:700>const</span> url <span style=color:#666>=</span> jsonObj.url;
   <span style=color:#a2f;font-weight:700>const</span> description <span style=color:#666>=</span> jsonObj.description;
-  <span style=color:#a2f;font-weight:700>const</span> imageurl <span style=color:#666>=</span> jsonObj.image;
+  <span style=color:#a2f;font-weight:700>const</span> image_url <span style=color:#666>=</span> jsonObj.image;
 
-  <span style=color:#a2f;font-weight:700>var</span> repourl <span style=color:#666>=</span> <span style=color:#a2f>document</span>.createElement(<span style=color:#b44>&#34;a&#34;</span>);
-  repourl.href <span style=color:#666>=</span> url;
+  <span style=color:#a2f;font-weight:700>var</span> ele_a <span style=color:#666>=</span> <span style=color:#a2f>document</span>.createElement(<span style=color:#b44>&#34;a&#34;</span>);
+  ele_a.href <span style=color:#666>=</span> url;
 
-  <span style=color:#a2f;font-weight:700>var</span> img <span style=color:#666>=</span> <span style=color:#a2f>document</span>.createElement(<span style=color:#b44>&#34;img&#34;</span>);
-  img.src <span style=color:#666>=</span> imageurl;
-  img.style.width <span style=color:#666>=</span> <span style=color:#b44>&#34;70%&#34;</span>;
-  img.style.height <span style=color:#666>=</span> <span style=color:#b44>&#34;70%&#34;</span>;
+  <span style=color:#a2f;font-weight:700>var</span> ele_img <span style=color:#666>=</span> <span style=color:#a2f>document</span>.createElement(<span style=color:#b44>&#34;img&#34;</span>);
+  ele_img.src <span style=color:#666>=</span> image_url;
+  ele_img.style.width <span style=color:#666>=</span> <span style=color:#b44>&#34;70%&#34;</span>;
+  ele_img.style.height <span style=color:#666>=</span> <span style=color:#b44>&#34;70%&#34;</span>;
 
-  repourl.appendChild(img);
-  nameele.appendChild(repourl);
+  ele_a.appendChild(ele_img);
+  target_ele.appendChild(ele_a);
 }
 </code></pre></div><h1 id=おわりに>おわりに <a href=#%e3%81%8a%e3%82%8f%e3%82%8a%e3%81%ab class=anchor>🔗</a></h1><p>外部の OGP を取得する API サーバを Go と Vercel で構築し、Hugo の shortcode を用いて API サーバとやり取りをするような JavaScript を埋め込みました。参考になれば幸いです。</p></div><div class=tags><a href=https://kinpokoblog.com/tags/hugo>Hugo</a>
 <a href=https://kinpokoblog.com/tags/vercel>Vercel</a>
