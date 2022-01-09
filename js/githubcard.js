@@ -13,19 +13,19 @@
       console.log(e);
     });
   }
-  function MakeCard(jsonObj, name) {
-    const target_ele = document.getElementById(name);
-    const title = jsonObj.title;
-    const url = jsonObj.url;
-    const description = jsonObj.description;
-    const image_url = jsonObj.image;
-    var ele_a = document.createElement("a");
-    ele_a.href = url;
-    var ele_img = document.createElement("img");
-    ele_img.src = image_url;
-    ele_img.style.width = "70%";
-    ele_img.style.height = "70%";
-    ele_a.appendChild(ele_img);
-    target_ele.appendChild(ele_a);
+  function MakeCard(json, name) {
+    const target_elem = document.getElementById(name);
+    const title = json.title;
+    const url = json.url;
+    const description = json.description;
+    const image_url = json.image;
+    var elem_a = document.createElement("a");
+    elem_a.href = url;
+    var elem_img = document.createElement("img");
+    elem_img.src = image_url;
+    elem_img.style.width = "70%";
+    elem_img.style.height = "70%";
+    elem_a.appendChild(elem_img);
+    target_elem.appendChild(elem_a);
   }
 })();
