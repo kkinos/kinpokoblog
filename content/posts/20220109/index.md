@@ -69,9 +69,9 @@ js.Build}}
 `assets/js/githubcard.js`
 
 ```js
-GetGitHubOGP(Url, Name);
+MakeGithubCard(Url, Name);
 
-function GetGitHubOGP(url, name) {
+function MakeGithubCard(url, name) {
   var repo_name = name;
   fetch("https://getogp.vercel.app/api?url=" + url, {
     mode: "cors",
@@ -80,30 +80,30 @@ function GetGitHubOGP(url, name) {
       return response.json();
     })
     .then((result) => {
-      MakeGitHubCard(result, repo_name);
+      MakeCard(result, repo_name);
     })
     .catch((e) => {
       console.log(e);
     });
 }
 
-function MakeGitHubCard(jsonObj, name) {
-  const nameele = document.getElementById(name);
+function MakeCard(jsonObj, name) {
+  const target_ele = document.getElementById(name);
   const title = jsonObj.title;
   const url = jsonObj.url;
   const description = jsonObj.description;
-  const imageurl = jsonObj.image;
+  const image_url = jsonObj.image;
 
-  var repourl = document.createElement("a");
-  repourl.href = url;
+  var ele_a = document.createElement("a");
+  ele_a.href = url;
 
-  var img = document.createElement("img");
-  img.src = imageurl;
-  img.style.width = "70%";
-  img.style.height = "70%";
+  var ele_img = document.createElement("img");
+  ele_img.src = image_url;
+  ele_img.style.width = "70%";
+  ele_img.style.height = "70%";
 
-  repourl.appendChild(img);
-  nameele.appendChild(repourl);
+  ele_a.appendChild(ele_img);
+  target_ele.appendChild(ele_a);
 }
 ```
 
