@@ -1,9 +1,8 @@
 MakeGitHubCard(Url, Name)
 
 function MakeGitHubCard(url, name) {
-    var URL = url
     var repo_name = name
-    fetch("https://getogp.vercel.app/api?url=" + Url,
+    fetch("https://getogp.vercel.app/api?url=" + url,
 {
   mode: 'cors'
 })
@@ -17,7 +16,6 @@ function MakeGitHubCard(url, name) {
        console.log(e)
    })
 }
-
 
 function MakeCard(jsonObj, name) {
     const nameele = document.getElementById(name)
@@ -36,6 +34,4 @@ function MakeCard(jsonObj, name) {
 
     repourl.appendChild(img)
     nameele.appendChild(repourl)
-
-
 }
