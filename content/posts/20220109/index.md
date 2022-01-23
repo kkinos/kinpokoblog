@@ -32,9 +32,9 @@ Vercel で CORS の設定をするには以下のようにします。[参考](h
 {
   "routes": [
     {
-      "src": "/api/*",
+      "src": "/api",
       "methods": ["GET"],
-      "dest": "/api/*",
+      "dest": "/api",
       "headers": {
         "Access-Control-Allow-Origin": "https://kinpokoblog.com"
       }
