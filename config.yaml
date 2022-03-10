@@ -1,6 +1,6 @@
 baseURL: "https://kinpokoblog.com/"
 languageCode: ja-jp
-title: kinpoko BLOG
+title: kinpoko blog
 theme: mini
 publishDir: docs
 canonifyurls: true
