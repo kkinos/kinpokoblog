@@ -1,0 +1,90 @@
+<!doctype html><html lang=ja-jp>
+<head>
+<title>『RISC-VとChiselで学ぶ はじめてのCPU自作』を読んだ | kinpoko blog</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta name=viewport content="width=device-width,minimum-scale=1">
+<meta name=description content="はじめに 🔗『RISC-V と Chisel で学ぶ はじめての CPU 自作』 という本を読んだので感想を残しておこうと思います。 本の感想 🔗この本は RISC-V のエミュレータを Chisel">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:site content="@aaaabbbbbbcc">
+<meta name=twitter:creator content="@aaaabbbbbbcc">
+<meta property="og:title" content="『RISC-VとChiselで学ぶ はじめてのCPU自作』を読んだ">
+<meta property="og:url" content="https://kinpokoblog.com/posts/read-first-time-cpu-dev/">
+<meta property="og:image" content="https://vercel-generating-og-images.vercel.app/%E3%80%8ERISC-V%E3%81%A8Chisel%E3%81%A7%E5%AD%A6%E3%81%B6%20%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AECPU%E8%87%AA%E4%BD%9C%E3%80%8F%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0.png?template=kinpokoblog">
+<meta property="og:description" content>
+<meta name=generator content="Hugo 0.91.2">
+<meta name=ROBOTS content="INDEX, FOLLOW">
+<link rel=stylesheet href=https://kinpokoblog.com/css/style.css> <link rel=stylesheet href=https://kinpokoblog.com/css/custom.css> <link rel="shortcut icon" href=https://kinpokoblog.com/images/favicon.ico type=image/x-icon>
+</head>
+<body>
+<nav class=navigation>
+<a href=https://kinpokoblog.com/> <span class=arrow>←</span>Home</a>
+<a href=https://kinpokoblog.com/posts>Archive</a>
+<a href=https://kinpokoblog.com/tags>Tags</a>
+<a href=https://kinpokoblog.com/about>About</a>
+<a class=button href=https://kinpokoblog.com/index.xml>RSS</a>
+</nav>
+<main class=main>
+<section id=single>
+<h1 class=title>『RISC-VとChiselで学ぶ はじめてのCPU自作』を読んだ</h1>
+<div class=tip>
+<span>
+Apr 26, 2022 22:44
+</span>
+<span class=split>
+·
+</span>
+<span>
+1232 words
+</span>
+<span class=split>
+·
+</span>
+<span>
+3 minute read
+</span>
+</div>
+<div class=content>
+<h1 id=はじめに>はじめに <a href=#%e3%81%af%e3%81%98%e3%82%81%e3%81%ab class=anchor>🔗</a></h1><p><a href=https://www.amazon.co.jp/dp/4297123053 target=_blank rel=noopener>
+『RISC-V と Chisel で学ぶ はじめての CPU 自作』
+</a>という本を読んだので感想を残しておこうと思います。</p>
+<h1 id=本の感想>本の感想 <a href=#%e6%9c%ac%e3%81%ae%e6%84%9f%e6%83%b3 class=anchor>🔗</a></h1><p>この本は RISC-V のエミュレータを Chisel という HDL で書くという本です。本の流れとしては、まず CPU の自作に必要なコンピュータ・アーキテクチャや Chisel についての基礎知識から始まり、その後簡単な CPU を実装し、それをもとにしてパイプラインの実装や、ベクトル命令の実装、そしてカスタム命令の実装へと進んでいきます。</p>
+<p>僕は、RISC-V どころか CPU すらよくわかっておらず、単純に CPU を作ってみれるなら作ってみたいというような動機で読み始めたものの一応一通り読み切ることができたので、この本のレベル感としてはだいぶ優しいのかなと思います。実際、この本では CPU を自作するために Chisel や Docker,RISC-V 用コンパイラなどのツールが出てきますが、丁寧な説明があるのでこの本通りに自作する分には特に困らないと思います。</p>
+<p>個人的に面白かったところは第 1 章と第 2 章です。第 1 章は、論理回路と電子回路のつながりから始まり、どのように論理を組み合わせたら CPU が表現できるのか、そして CPU を構成する電子回路の説明というような流れになっています。第 2 章は、 CPU の構成や処理の流れについての説明です。どちらも基礎的な部分ですが、非常によくまとまっており説明もわかり易く読みやすかったです。この 1,2 章を読むだけでもこの本を買う価値はあると思います。</p>
+<p>その後の章で Chisel を用いて CPU を作っていきます。個人的にはこの Chisel というのがなかなかとっつきにくかったです。というのも Chisel は Scala から来ており、オブジェクト指向言語でありかつ HDL なので、どちらの経験もなかった自分としてはコードを理解するのに苦労しました。一応コードに出てくる文法については説明があるので一通り読むことはできました。</p>
+<p>Chisel は HDL ですが、この本では実際に FPGA 上で動かすということはせず、あくまで PC 上で動かすエミュレータとして作っています。そこでエミュレータとして作るのであれば、復習とともに別の言語で書き直してみようかなと思いました。</p>
+<h1 id=エミュレータを書き直してみた>エミュレータを書き直してみた <a href=#%e3%82%a8%e3%83%9f%e3%83%a5%e3%83%ac%e3%83%bc%e3%82%bf%e3%82%92%e6%9b%b8%e3%81%8d%e7%9b%b4%e3%81%97%e3%81%a6%e3%81%bf%e3%81%9f class=anchor>🔗</a></h1><p>最近使っていた Go を使いました。</p>
+<script type=text/javascript>var Url="https://github.com/kinpoko/grvemu",Name="grvemu"</script>
+<div class=githubcard id=grvemu align=center></div>
+<br>
+<script src=https://kinpokoblog.com/js/githubcard.js></script>
+<p>本の第 2 部までで作成できるものとほとんど同じです。なので<a href=https://github.com/riscv-software-src/riscv-tests target=_blank rel=noopener>
+riscv-test
+</a>の一部をパスすることができ、簡単な C のプログラムが動きます。</p>
+<p>書き直してみると、本を読んで写経するだけでは考えないようなことまで考えるので、全体的な理解が進みました。</p>
+<p>将来的には本の内容にはなかった 64bit や RV32G に対応していきたいです。</p>
+<h1 id=おわりに>おわりに <a href=#%e3%81%8a%e3%82%8f%e3%82%8a%e3%81%ab class=anchor>🔗</a></h1><p>非常に良い本だと思いました。説明もわかりやすく本自体もそこまでページ数があるわけではないのでよくまとまっていて CPU にひととおり触れられるので、僕のような CPU 初心者にも読みやすくおすすめだと思います。本の最後に「もっと深く学びたい人のへのお勧め書籍」という項目もあり、次のステップへの道筋も示してくれています。僕は今そこで紹介されている本を読んでいるので、読み終えたらそれもブログにしたいと思います。</p>
+</div>
+<div class=tags>
+<a href=https://kinpokoblog.com/tags/book>book</a>
+<a href=https://kinpokoblog.com/tags/risc-v>RISC-V</a>
+<a href=https://kinpokoblog.com/tags/cpu>CPU</a>
+</div>
+</section>
+</main>
+<footer id=footer>
+<div id=social>
+<a class=symbol href=https://github.com/kinpoko target=_blank><svg fill="#bbb" width="28" height="28" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Github</title><desc>Created with Sketch.</desc><defs/><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Social-Icons---Rounded-Black" transform="translate(-264.000000, -939.000000)"><g id="Github" transform="translate(264.000000, 939.000000)"><path d="M8 72H64c4.418278.0 8-3.581722 8-8V8c0-4.418278-3.581722-8-8-8H8c-4.418278 811624501e-24-8 3.581722-8 8V64c541083001e-24 4.418278 3.581722 8 8 8z" id="Rounded" fill="#bbb"/><path d="M35.9985 13C22.746 13 12 23.7870921 12 37.096644c0 10.6440272 6.876 19.6751861 16.4145 22.8617681C29.6145 60.1797862 30.0525 59.4358488 30.0525 58.7973276 30.0525 58.2250681 30.0315 56.7100863 30.0195 54.6996482c-6.6765 1.4562499-8.085-3.2302544-8.085-3.2302544-1.0905-2.7829884-2.664-3.5239139-2.664-3.5239139C17.091 46.4500754 19.4355 46.4801943 19.4355 46.4801943c2.4075.1701719 3.675 2.4833051 3.675 2.4833051 2.142 3.6820383 5.6175 2.6188404 6.9855 2.0014024C30.3135 49.4077535 30.9345 48.3460615 31.62 47.7436831 26.2905 47.1352808 20.688 45.0691228 20.688 35.8361671c0-2.6308879.9345-4.781379 2.4705-6.4665327C22.911 28.7597262 22.0875 26.3110578 23.3925 22.9934585c0 0 2.016-.6475568 6.6 2.4697516C31.908 24.9285993 33.96 24.6620468 36.0015 24.6515052 38.04 24.6620468 40.0935 24.9285993 42.0105 25.4632101c4.581-3.1173084 6.5925-2.4697516 6.5925-2.4697516C49.9125 26.3110578 49.089 28.7597262 48.8415 29.3696344 50.3805 31.0547881 51.309 33.2052792 51.309 35.8361671c0 9.2555448-5.6115 11.29309-10.9575 11.8894446.860999999999997.7439374 1.629 2.2137408 1.629 4.4621184C41.9805 55.4089489 41.9505 58.0067059 41.9505 58.7973276 41.9505 59.4418726 42.3825 60.1918338 43.6005 59.9554002 53.13 56.7627944 60 47.7376593 60 37.096644 60 23.7870921 49.254 13 35.9985 13" fill="#fff"/></g></g></g></svg>
+</a>
+<a class=symbol href=https://twitter.com/aaaabbbbbbcc target=_blank><svg fill="#bbb" width="28" height="28" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="438.536" height="438.536" viewBox="0 0 438.536 438.536" style="enable-background:new 0 0 438.536 438.536"><g><path d="M414.41 24.123C398.333 8.042 378.963.0 356.315.0H82.228C59.58.0 40.21 8.042 24.126 24.123 8.045 40.207.003 59.576.003 82.225v274.084c0 22.647 8.042 42.018 24.123 58.102 16.084 16.084 35.454 24.126 58.102 24.126h274.084c22.648.0 42.018-8.042 58.095-24.126 16.084-16.084 24.126-35.454 24.126-58.102V82.225C438.532 59.576 430.49 40.204 414.41 24.123zM335.471 168.735c.191 1.713.288 4.278.288 7.71.0 15.989-2.334 32.025-6.995 48.104-4.661 16.087-11.8 31.504-21.416 46.254-9.606 14.749-21.074 27.791-34.396 39.115-13.325 11.32-29.311 20.365-47.968 27.117-18.648 6.762-38.637 10.143-59.953 10.143-33.116.0-63.76-8.952-91.931-26.836 4.568.568 9.329.855 14.275.855 27.6.0 52.439-8.565 74.519-25.7-12.941-.185-24.506-4.179-34.688-11.991-10.185-7.803-17.273-17.699-21.271-29.691 4.947.76 8.658 1.137 11.132 1.137 4.187.0 9.042-.76 14.56-2.279-13.894-2.669-25.598-9.562-35.115-20.697-9.519-11.136-14.277-23.84-14.277-38.114v-.571c10.085 4.755 19.602 7.229 28.549 7.422-17.321-11.613-25.981-28.265-25.981-49.963.0-10.66 2.758-20.747 8.278-30.264 15.035 18.464 33.311 33.213 54.816 44.252 21.507 11.038 44.54 17.227 69.092 18.558-.95-3.616-1.427-8.186-1.427-13.704.0-16.562 5.853-30.692 17.56-42.399 11.703-11.706 25.837-17.561 42.394-17.561 17.515.0 32.079 6.283 43.688 18.846 13.134-2.474 25.892-7.33 38.26-14.56-4.757 14.652-13.613 25.788-26.55 33.402 12.368-1.716 23.88-4.95 34.537-9.708C357.458 149.793 347.462 160.166 335.471 168.735z"/></g></svg>
+</a>
+</div>
+<p class=copyright>
+© 2021 kinpoko
+</p>
+<p class=powerby>
+Powered by <a href=http://www.gohugo.io/>Hugo</a> Theme By <a href=https://github.com/nodejh/hugo-theme-cactus-plus>nodejh</a>
+</p>
+</footer>
+</body>
+</html>
