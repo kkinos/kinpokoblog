@@ -28,7 +28,7 @@ Chisel は HDL ですが、この本では実際に FPGA 上で動かすとい�
 
 {{<githubcard url="https://github.com/kinpoko/grvemu" name="grvemu">}}
 
-本の第 2 部までで作成できるものとほとんど同じです。なので[riscv-test](https://github.com/riscv-software-src/riscv-tests)の一部をパスすることができ、簡単な C のプログラムが動きます。
+本の第 2 部までで作成できるものとほとんど同じです。なので[riscv-tests](https://github.com/riscv-software-src/riscv-tests)の一部をパスすることができ、簡単な C のプログラムが動きます。
 
 書き直してみると、本を読んで写経するだけでは考えないようなことまで考えるので、全体的な理解が進みました。
 
