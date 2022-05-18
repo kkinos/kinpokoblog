@@ -33,7 +33,7 @@ params:
   # Site Author
   author: kinpoko
   # Author biography
-  bio: 愛していると云ってくれ
+  bio:
   # Site Description, used in HTML meat
   description: kinpokoのブログ
   enableRSS: true
