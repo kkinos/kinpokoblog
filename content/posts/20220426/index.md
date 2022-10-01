@@ -2,7 +2,7 @@
 title: "『RISC-VとChiselで学ぶ はじめてのCPU自作』を読んだ"
 date: 2022-04-26T22:44:06+09:00
 draft: false
-tags: ["本", "RISC-V", "CPU", "Chisel","Go"]
+tags: ["Book", "RISC-V", "CPU", "Chisel", "Go"]
 slug: "read-first-time-cpu-dev"
 ---
 

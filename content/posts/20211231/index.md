@@ -2,7 +2,7 @@
 title: "『ゼロからのOS自作入門』を読んでMikanOSを改造してみた"
 date: 2021-12-31T12:08:00+09:00
 draft: false
-tags: ["本", "operating system", "MikanOS", "kinOS"]
+tags: ["Book", "operating system", "MikanOS", "kinOS"]
 slug: "read-zero-os-dev"
 ---
 
